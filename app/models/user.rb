@@ -7,9 +7,11 @@ class User < ApplicationRecord
 
   has_many :questions
 
+  before_validation :downcase_username
+
   validates :email, :username, presence: true
   validates :email, :username, uniqueness: true
-  validates :email, format: {with: /\A[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]+\z/}
+  validates :email, format: {with: /\A[\w.%+-]+@[\w.-]+\.[A-Za-z]+\z/}
   validates :username, length: {maximum: 40}, format: {with: /\A\w+\z/}
 
   attr_accessor :password
@@ -48,5 +50,9 @@ class User < ApplicationRecord
     else
       nil
     end
+  end
+
+  def downcase_username
+    self.username.downcase
   end
 end
