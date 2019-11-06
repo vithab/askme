@@ -7,8 +7,6 @@ class User < ApplicationRecord
 
   has_many :questions
 
-  before_validation :downcase_username
-
   validates :email, :username, presence: true
   validates :email, :username, uniqueness: true
   validates :email, format: {with: /\A[\w.%+-]+@[\w.-]+\.[A-Za-z]+\z/}
@@ -18,6 +16,8 @@ class User < ApplicationRecord
 
   validates_presence_of :password, on: create
   validates_confirmation_of :password
+
+  before_validation :downcase_username
 
   before_save :encrypt_password
 
@@ -53,6 +53,6 @@ class User < ApplicationRecord
   end
 
   def downcase_username
-    self.username.downcase
+    self.username.downcase! unless username.blank?
   end
 end
