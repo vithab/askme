@@ -11,6 +11,11 @@ module ApplicationHelper
     end
   end
 
+  # Хелпер, рисующий span тэг с иконкой из font-awesome
+  def fa_icon(icon_class)
+    content_tag 'span', '', class: "fa fa-#{icon_class}"
+  end
+
   # Метод для склонения слова "вопрос"
   # 1 крокодил — именительный падеж, единственное число
   # 2 крокодила — родительный падеж, единственное число
