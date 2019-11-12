@@ -33,9 +33,14 @@
 
 <%# с помощью хелпера incline просклонируем слово 'вопрос' в зависимости от количества%>
 <div class="text-lead-grey buffer-top-large">
-  <%= "У пользователя @#{@user.username}" %>
-  <%= @questions.count %>
-  <%= incline(@questions.count, 'вопрос', 'вопроса', 'вопросов') %>
+  <%# Выведем количество всех вопросов, вопросов с ответами и не отвеченных%>
+  <p><%= "У пользователя @#{@user.username}" %>:</p>
+  <%= "всего #{@questions_count}" %>
+  <%= incline(@questions_count, 'вопрос', 'вопроса', 'вопросов') %>,
+  <%= @answers_count %>
+  <%= incline(@answers_count, 'ответ', 'ответа', 'ответов') %>,
+  <%= @unanswered_count %>
+  <%= incline(@unanswered_count, 'без ответа', 'без ответов', 'без ответов') %>
 </div>
 
 <%# Блок с формой для задавания пользователю вопроса %>
