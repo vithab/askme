@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   # список юзеров.
   root 'users#index'
 
-  # Ресурс пользователей (экшен destroy не поддерживается)
-  resources :users, except: [:destroy]
+  # Ресурс пользователей
+  resources :users
 
   # Ресурс сессий (только три экшена :new, :create, :destroy)
   resources :sessions, only: [:new, :create, :destroy]
