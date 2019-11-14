@@ -11,6 +11,7 @@ class User < ApplicationRecord
   validates :email, :username, uniqueness: true
   validates :email, format: {with: /\A[\w.%+-]+@[\w.-]+\.[A-Za-z]+\z/}
   validates :username, length: {maximum: 40}, format: {with: /\A\w+\z/}
+  validates_format_of :user_color, :with => /\A#([A-Fa-f0-9]{6})\z/
 
   attr_accessor :password
 
