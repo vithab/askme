@@ -12,7 +12,7 @@
     <%# Автор вопроса %>
     <div class="buffer-bottom">
       <% if question.author %>
-        <%= link_to "Спрашивает @#{question.author.username}", user_path(question.author)%>
+        <%= link_to "Спрашивает @#{question.author.username}", user_path(question.author) %>
       <% end %>
     </div>
 
