@@ -11,8 +11,13 @@
 
     <%# Автор вопроса %>
     <div class="buffer-bottom">
+      <%# Если есть залогиненный автор %>
       <% if question.author %>
+        <%# Ссылка на профиль автора вопроса %>
         <%= link_to "Спрашивает @#{question.author.username}", user_path(question.author) %>
+        <% else %>
+        <%# Если не залогинен %>
+        <%= 'вопрос от анонима' %>
       <% end %>
     </div>
 
